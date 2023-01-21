@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'array-filtro'
+  name: 'arrayFiltro'
 })
 export class ArrayFiltroPipe implements PipeTransform {
 
@@ -10,7 +10,8 @@ export class ArrayFiltroPipe implements PipeTransform {
       filtro = filtro.toUpperCase();
 
       return value.filter(a=>
-        a.nome.toUpperCase().indexOf(filtro) >= 0)
+        a.nome.toUpperCase().indexOf(filtro) >= 0
+        );
     } else {
       return value;
     }
