@@ -1,4 +1,3 @@
-
 <main>
   <div class="container">
     <div class="text-center mt-6">
@@ -17,16 +16,19 @@
                   <div class="row">
                     <div class="form-group">
                       <label for="form-valor">Valor *</label>
-                      <input
-                        id="form-valor"
-                        type="number"
-                        name="valor"
-                        class="form-control"
-                        placeholder="Digite o valor a ser convertido *"
-                        required="required"
-                        data-error="É necessário preencher um valor."
-                        [(ngModel)]="valorInicio"
-                      />
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input
+                          id="form-valor"
+                          type="number"
+                          name="valor"
+                          class="form-control"
+                          placeholder="Digite o valor a ser convertido *"
+                          required="required"
+                          data-error="É necessário preencher um valor."
+                          [(ngModel)]="valorInicio"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -65,18 +67,24 @@
                       <option>Real brasileiro (BRL)</option>
                     </select>
                   </div>
-                  <button class="btn btn-success btn-send btn-block">Converter</button>
+
                 </div>
+                <div class="d-grid gap-2 mx-auto">
+                  <button class="btn btn-primary btn-submit">
+                    Converter
+                  </button>
+                </div>
+
               </form>
             </div>
           </div>
           <!-- /.8 -->
         </div>
-          </div>
-
-        <!-- /.row-->
       </div>
+
+      <!-- /.row-->
     </div>
+  </div>
 
   <div class="row">
     <div class="col-lg-3 mx-auto">
@@ -87,10 +95,22 @@
           <div class="container">
             <div class="form-group">
               <label for="valor_convertido">Valor convertido</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input
+                  id="valor_convertido"
+                  type="number"
+                  name="valor_convertido"
+                  class="form-control"
+                  placeholder="0,00"
+                  [(ngModel)]="valorSaida"
+                />
+              </div>
+              <label for="taxa-cotacao">Taxa de cotação</label>
               <input
-                id="valor_convertido"
-                type="number"
-                name="valor_convertido"
+                id="taxa-cotacao"
+                type="text"
+                name="taxa_cotacao"
                 class="form-control"
                 placeholder="0,00"
                 [(ngModel)]="valorSaida"
@@ -102,4 +122,3 @@
     </div>
   </div>
 </main>
-
