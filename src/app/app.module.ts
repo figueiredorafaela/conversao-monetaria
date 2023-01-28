@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaMoedaComponent } from './lista-moeda/lista-moeda.component';
 import { ConverteMoedaComponent } from './converte-moeda/converte-moeda.component';
+import { MenuComponent } from './menu/menu.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,10 +16,12 @@ import { ConverteMoedaComponent } from './converte-moeda/converte-moeda.componen
     AppComponent,
       ListaMoedaComponent,
       ConverteMoedaComponent,
-      ArrayFiltroPipe
+      ArrayFiltroPipe,
+      MenuComponent
    ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],

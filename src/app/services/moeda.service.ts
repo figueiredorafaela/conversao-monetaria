@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 const url =
-    'https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/distritos';
+    'https://servicodados.ibge.gov.br/api/v1/localidades/paises?orderBy=nome';
 
 @Injectable({providedIn: 'root'})
 export class MoedaService {

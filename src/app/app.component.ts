@@ -10,6 +10,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   distritos: Array<{ id: number, nome: string }> = [];
   filtro: string = '';
 
+
+
   @ViewChild('campoBusca')
   campoBusca!: ElementRef<HTMLInputElement>;
 

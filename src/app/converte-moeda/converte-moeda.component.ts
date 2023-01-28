@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-converte-moeda',
@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConverteMoedaComponent implements OnInit {
 
-  constructor() { }
+  @Output() aoConverter = new EventEmitter<any>();
+
+  valor:number | undefined;
+
+  converter(){
+    console.log('Conversão solicitada');
+    console.log('Valor: ', this.valor);
+  }
+
+
 
   ngOnInit() {
   }
