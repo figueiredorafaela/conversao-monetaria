@@ -1,26 +1,20 @@
 <app-converte-moeda (aoConverter)="converter($event)"></app-converte-moeda>
 
-
-
-
 <app-lista-moeda>
-<tr *ngFor="let distrito of (distritos | arrayFiltro : filtro)">
-  <td>{{distrito.id}}</td>
-    <td> {{distrito.nome}}</td>
+  <tr *ngFor="let distrito of distritos | arrayFiltro : filtro">
+    <td>{{ distrito.id }}</td>
+    <td>{{ distrito.nome }}</td>
+  </tr></app-lista-moeda
+>
 
-</app-lista-moeda>
-
-<input
-  #campoBusca
-  type="search"
-  placeholder="busca...">
+<input #campoBusca type="search" placeholder="busca..." />
 
 <table>
-  <tr *ngFor="let distrito of (distritos | arrayFiltro : filtro)">
-    <td>{{distrito.id}}</td>
-    <td>{{distrito.nome}}</td>
+  <tr *ngFor="let distrito of distritos | arrayFiltro : filtro">
+    <td>{{ distrito.id }}</td>
+    <td>{{ distrito.nome }}</td>
   </tr>
 </table>
 <router-outlet></router-outlet>
 
-<app-historico [conversoes]="conversoes"></app-historico>
+<app-historico></app-historico>

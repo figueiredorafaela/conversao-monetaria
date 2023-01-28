@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { fromEvent, debounceTime } from "rxjs";
 import { MoedaService } from "./services/moeda.service";
+import { ConversaoService } from "./services/conversao.service";
 
 @Component({
   selector: 'app-root',
@@ -8,22 +9,19 @@ import { MoedaService } from "./services/moeda.service";
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  conversoes: any[] = [];
-
   distritos: Array<{ id: number, nome: string }> = [];
   filtro: string = '';
+  constructor(private moedaService: MoedaService,private service: ConversaoService) { }
+
 
   converter($event: any){
-    const conversao = {...$event, data: new Date()}
-    this.conversoes.push(conversao);
+    this.service.adicionar($event);
   }
-
 
 
   @ViewChild('campoBusca')
   campoBusca!: ElementRef<HTMLInputElement>;
 
-  constructor(private moedaService: MoedaService) { }
 
   ngOnInit() {
     this.moedaService.listar().subscribe(

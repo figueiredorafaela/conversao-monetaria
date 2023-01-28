@@ -1,3 +1,4 @@
+import { ConversaoService } from './../services/conversao.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HistoricoComponent implements OnInit {
 
-  @Input() conversoes: any[] | undefined;
+  conversoes: any[] = [];
 
-  constructor() { }
+  constructor(private service: ConversaoService) { }
 
   ngOnInit() {
+    this.conversoes = this.service.conversoes;
   }
 
 }
