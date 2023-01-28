@@ -25,7 +25,7 @@
                         placeholder="Digite o valor a ser convertido *"
                         required="required"
                         data-error="É necessário preencher um valor."
-                        [(ngModel)]="valor"
+                        [(ngModel)]="valorInicio"
                       />
                     </div>
                   </div>
@@ -39,6 +39,7 @@
                       class="form-control"
                       required="required"
                       data-error="Selecione a moeda."
+                      [(ngModel)]="moedaOriginal"
                     >
                       <option value="" selected disabled>
                         --Selecione a moeda--
@@ -56,6 +57,7 @@
                       class="form-control"
                       required="required"
                       data-error="Selecione a moeda."
+                      [(ngModel)]="moedaDestino"
                     >
                       <option value="" selected disabled>
                         --Selecione a moeda--
@@ -91,6 +93,7 @@
                 name="valor_convertido"
                 class="form-control"
                 placeholder="0,00"
+                [(ngModel)]="valorSaida"
               />
             </div>
           </div>

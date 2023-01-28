@@ -13,10 +13,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let conversao of conversoes">
-      <td>{{ conversao.valor }}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ conversao.valorInicio }}</td>
+      <td>{{ conversao.moedaOriginal }}</td>
+      <td>{{ conversao.moedaDestino }}</td>
+      <td>{{ conversao.valorSaida }}</td>
       <td>{{ conversao.data | date : "short" }}</td>
       <td></td>
     </tr>

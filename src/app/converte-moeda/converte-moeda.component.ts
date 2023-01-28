@@ -1,3 +1,4 @@
+import { AnimateTimings } from '@angular/animations';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -9,17 +10,20 @@ export class ConverteMoedaComponent implements OnInit {
 
   @Output() aoConverter = new EventEmitter<any>();
 
-  valor:number | undefined;
+  valorInicio: number = 0;
+  moedaOriginal: any;
+  moedaDestino: any;
+  valorSaida: number = 0;
 
   converter(){
-    const valorEmitir = {valor: this.valor};
+    const valorEmitir = {valorInicio: this.valorInicio, valorSaida: this.valorSaida, moedaDestino :this.moedaDestino, moedaOriginal: this.moedaOriginal};
     this.aoConverter.emit(valorEmitir);
 
     this.limparCampos();
   }
 
   limparCampos(){
-    this.valor = 0
+    this.valorInicio = 0
   }
 
 
