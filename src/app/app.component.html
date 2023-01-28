@@ -1,6 +1,5 @@
 <app-converte-moeda (aoConverter)="converter($event)"></app-converte-moeda>
 
-<p>Valor: {{ conversao?.valor }}</p>
 
 
 
@@ -23,3 +22,5 @@
   </tr>
 </table>
 <router-outlet></router-outlet>
+
+<app-historico [conversoes]="conversoes"></app-historico>

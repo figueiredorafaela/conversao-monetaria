@@ -8,14 +8,14 @@ import { MoedaService } from "./services/moeda.service";
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  conversao: any;
+  conversoes: any[] = [];
 
   distritos: Array<{ id: number, nome: string }> = [];
   filtro: string = '';
 
   converter($event: any){
-    console.log($event);
-    this.conversao = $event;
+    const conversao = {...$event, data: new Date()}
+    this.conversoes.push(conversao);
   }
 
 

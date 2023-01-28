@@ -9,15 +9,17 @@ import { ListaMoedaComponent } from './lista-moeda/lista-moeda.component';
 import { ConverteMoedaComponent } from './converte-moeda/converte-moeda.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { HistoricoComponent } from './historico/historico.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       ListaMoedaComponent,
       ConverteMoedaComponent,
       ArrayFiltroPipe,
-      MenuComponent
+      MenuComponent,
+      HistoricoComponent
    ],
   imports: [
     BrowserModule,
