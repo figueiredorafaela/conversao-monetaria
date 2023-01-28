@@ -7,8 +7,16 @@ import { MoedaService } from "./services/moeda.service";
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit, AfterViewInit {
+
+  conversao: any;
+
   distritos: Array<{ id: number, nome: string }> = [];
   filtro: string = '';
+
+  converter($event: any){
+    console.log($event);
+    this.conversao = $event;
+  }
 
 
 

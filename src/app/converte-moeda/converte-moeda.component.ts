@@ -12,8 +12,14 @@ export class ConverteMoedaComponent implements OnInit {
   valor:number | undefined;
 
   converter(){
-    console.log('Conversão solicitada');
-    console.log('Valor: ', this.valor);
+    const valorEmitir = {valor: this.valor};
+    this.aoConverter.emit(valorEmitir);
+
+    this.limparCampos();
+  }
+
+  limparCampos(){
+    this.valor = 0
   }
 
 

@@ -1,4 +1,9 @@
-<app-converte-moeda></app-converte-moeda>
+<app-converte-moeda (aoConverter)="converter($event)"></app-converte-moeda>
+
+<p>Valor: {{ conversao?.valor }}</p>
+
+
+
 <app-lista-moeda>
 <tr *ngFor="let distrito of (distritos | arrayFiltro : filtro)">
   <td>{{distrito.id}}</td>
