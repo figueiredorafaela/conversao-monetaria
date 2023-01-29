@@ -38,20 +38,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let moeda of moedas | arrayFiltro : filtro  | orderBy : key : reverse;
-              let nome = index">
+              <tr
+                *ngFor="
+                  let moeda of moedas | arrayFiltro : filtro| orderBy : key : reverse| paginate: { itemsPerPage: 5, currentPage: paginaAtual }; let nome = index;">
                 <td>{{ moeda.id }}</td>
                 <td>{{ moeda.nome }}</td>
                 <td>{{ moeda.simbolo }}</td>
               </tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <th>Moeda</th>
-                <th>ID</th>
-                <th>País</th>
-              </tr>
-            </tfoot>
+            <pagination-controls
+              (pageChange)="paginaAtual = $event"
+              previousLabel="Anterior"
+              nextLabel="Próximo"
+            ></pagination-controls>
           </table>
         </div>
       </div>

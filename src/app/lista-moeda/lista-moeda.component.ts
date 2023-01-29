@@ -11,11 +11,13 @@ export class ListaMoedaComponent implements OnInit {
 
   moedas: Array<{ id: string, nome: string}> = [];
   filtro: string = '';
+  paginaAtual = 1;
+  key: string = 'nome';
+  reverse: boolean = false;
 
   constructor(private moedaService: MoedaService) { }
 
-  key: string = 'nome'; // Define um valor padrão, para quando inicializar o componente
-  reverse: boolean = false;
+
 
   ngOnInit() {
     this.moedaService.listar().subscribe(
