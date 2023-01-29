@@ -10,9 +10,9 @@ import { ConversaoService } from "./services/conversao.service";
 export class AppComponent implements OnInit {
 
 
-  constructor(private moedaService: MoedaService,private service: ConversaoService) { }
+  constructor(private moedaService: MoedaService, private service: ConversaoService) { }
 
-  converter($event: any){
+  converter($event: any) {
     this.service.adicionar($event);
   }
 

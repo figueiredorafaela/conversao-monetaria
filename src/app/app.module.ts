@@ -21,12 +21,12 @@ registerLocaleData(localePt, 'pt')
 @NgModule({
   declarations: [
     AppComponent,
-      ListaMoedaComponent,
-      ConverteMoedaComponent,
-      ArrayFiltroPipe,
-      MenuComponent,
-      HistoricoComponent
-   ],
+    ListaMoedaComponent,
+    ConverteMoedaComponent,
+    ArrayFiltroPipe,
+    MenuComponent,
+    HistoricoComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -36,7 +36,7 @@ registerLocaleData(localePt, 'pt')
     NgxPaginationModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'pt'}
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent]
 })
