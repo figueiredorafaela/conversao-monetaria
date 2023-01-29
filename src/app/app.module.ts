@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt'
 import { HistoricoComponent } from './historico/historico.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -29,7 +30,8 @@ registerLocaleData(localePt, 'pt')
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    OrderModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'}

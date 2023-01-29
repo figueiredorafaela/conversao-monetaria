@@ -9,10 +9,13 @@ import { MoedaService } from '../services/moeda.service';
 })
 export class ListaMoedaComponent implements OnInit {
 
-  moedas: Array<{ id: number, nome: string}> = [];
+  moedas: Array<{ id: string, nome: string}> = [];
   filtro: string = '';
 
   constructor(private moedaService: MoedaService) { }
+
+  key: string = 'nome'; // Define um valor padrão, para quando inicializar o componente
+  reverse: boolean = false;
 
   ngOnInit() {
     this.moedaService.listar().subscribe(
@@ -28,9 +31,16 @@ export class ListaMoedaComponent implements OnInit {
         debounceTime(20)
       )
       .subscribe((e: Event) => {
+
+
         const target = e.target as HTMLInputElement;
         this.filtro = target.value;
       });
   }
+
+  sort(key: string) {
+    this.key = key;
+    this.reverse = !this.reverse;
+}
 
 }
