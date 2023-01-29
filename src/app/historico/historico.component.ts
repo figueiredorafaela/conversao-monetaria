@@ -1,5 +1,5 @@
 import { ConversaoService } from './../services/conversao.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-historico',
@@ -8,12 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HistoricoComponent implements OnInit {
 
+
   conversoes: any[] = [];
 
   constructor(private service: ConversaoService) { }
 
   ngOnInit() {
     this.conversoes = this.service.conversoes;
+  }
+
+  deleta(){
   }
 
 }

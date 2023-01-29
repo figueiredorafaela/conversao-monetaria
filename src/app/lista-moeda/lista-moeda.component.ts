@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { fromEvent, debounceTime } from 'rxjs';
+import { MoedaService } from '../services/moeda.service';
 
 @Component({
   selector: 'app-lista-moeda',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaMoedaComponent implements OnInit {
 
-  constructor() { }
+  moedas: Array<{ id: number, nome: string}> = [];
+  filtro: string = '';
+
+  constructor(private moedaService: MoedaService) { }
 
   ngOnInit() {
+    this.moedaService.listar().subscribe(
+      retornoApi => this.moedas = retornoApi
+  )}
+
+  @ViewChild('campoBusca')
+  campoBusca!: ElementRef<HTMLInputElement>;
+
+  ngAfterViewInit() {
+    fromEvent(this.campoBusca.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(20)
+      )
+      .subscribe((e: Event) => {
+        const target = e.target as HTMLInputElement;
+        this.filtro = target.value;
+      });
   }
 
 }

@@ -14,15 +14,16 @@ export class ConverteMoedaComponent implements OnInit {
   moedaOriginal: any;
   moedaDestino: any;
   valorSaida: number = 0;
+  taxaCotacao: number = 0;
 
-  converter(){
-    const valorEmitir = {valorInicio: this.valorInicio, valorSaida: this.valorSaida, moedaDestino :this.moedaDestino, moedaOriginal: this.moedaOriginal};
+  converter() {
+    const valorEmitir = { valorInicio: this.valorInicio, valorSaida: this.valorSaida, moedaDestino: this.moedaDestino, moedaOriginal: this.moedaOriginal, taxaCotacao: this.taxaCotacao };
     this.aoConverter.emit(valorEmitir);
 
     this.limparCampos();
   }
 
-  limparCampos(){
+  limparCampos() {
     this.valorInicio = 0
   }
 

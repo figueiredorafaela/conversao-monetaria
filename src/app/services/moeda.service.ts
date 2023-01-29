@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+export interface Token {
+  id: number;
+  simbolo: string;
+  descricao: string;
+}
+
 const url =
     'https://servicodados.ibge.gov.br/api/v1/localidades/paises?orderBy=nome';
 

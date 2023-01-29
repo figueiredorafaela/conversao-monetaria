@@ -9,9 +9,11 @@ import { ListaMoedaComponent } from './lista-moeda/lista-moeda.component';
 import { ConverteMoedaComponent } from './converte-moeda/converte-moeda.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
-import { HistoricoComponent } from './historico/historico.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt'
+import { HistoricoComponent } from './historico/historico.component';
+
+
 
 registerLocaleData(localePt, 'pt')
 @NgModule({
