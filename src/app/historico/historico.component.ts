@@ -10,6 +10,10 @@ export class HistoricoComponent implements OnInit {
 
 
   conversoes: any[] = [];
+  filtro: string = '';
+  paginaAtual = 1;
+  key: string = 'nome';
+  reverse: boolean = false;
 
   constructor(private service: ConversaoService) { }
 
@@ -17,7 +21,13 @@ export class HistoricoComponent implements OnInit {
     this.conversoes = this.service.conversoes;
   }
 
-  deleta(){
+  sort(key: any) {
+    this.key = key;
+    this.reverse = !this.reverse;
+}
+
+  deletar(){
+    this.conversoes.length = 0;
   }
 
 }

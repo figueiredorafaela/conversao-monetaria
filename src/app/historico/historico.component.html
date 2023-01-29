@@ -10,15 +10,44 @@
           width="100%"
         >
           <thead>
-            <th class="th-sm">Valor de entrada</th>
-            <th class="th-sm">Moeda original</th>
-            <th class="th-sm">Moeda de destino</th>
-            <th class="th-sm">Valor de saída</th>
-            <th class="th-sm">Data e hora</th>
-            <th class="th-sm">Taxa de cotação</th>
+            <th (click)="sort('entrada')" class="th-sm">
+              Valor de entrada
+              <span *ngIf="key == 'entrada'">{{ reverse ? "▲" : "▼" }}</span>
+            </th>
+            <th (click)="sort('moedaOriginal')" class="th-sm">
+              Moeda original
+              <span *ngIf="key == 'moedaOriginal'">{{
+                reverse ? "▲" : "▼"
+              }}</span>
+            </th>
+            <th (click)="sort('moedaDestino')" class="th-sm">
+              Moeda de destino
+              <span *ngIf="key == 'moedaDestino'">{{
+                reverse ? "▲" : "▼"
+              }}</span>
+            </th>
+            <th (click)="sort('saida')" class="th-sm">
+              Valor de saída
+              <span *ngIf="key == 'saida'">{{ reverse ? "▲" : "▼" }}</span>
+            </th>
+            <th (click)="sort('data')"class="th-sm">
+              Data e hora
+              <span *ngIf="key == 'data'">{{ reverse ? "▲" : "▼" }}</span>
+            </th>
+            <th (click)="sort('taxa')" class="th-sm">
+              Taxa de cotação
+              <span *ngIf="key == 'taxa'">{{ reverse ? "▲" : "▼" }}</span>
+            </th>
           </thead>
           <tbody>
-            <tr *ngFor="let conversao of conversoes">
+            <tr
+              *ngFor="
+                let conversao of conversoes
+                  | paginate : { itemsPerPage: 5, currentPage: paginaAtual }
+                  | orderBy : key : reverse;
+                let nome = index
+              "
+            >
               <td>{{ conversao.valorInicio }}</td>
               <td>{{ conversao.moedaOriginal }}</td>
               <td>{{ conversao.moedaDestino }}</td>
@@ -28,8 +57,13 @@
             </tr>
           </tbody>
         </table>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-danger" type="button">Apagar histórico</button>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+          <pagination-controls
+              (pageChange)="paginaAtual = $event"
+              previousLabel=""
+              nextLabel=""
+            ></pagination-controls>
+          <button class="btn btn-danger" type="button" (ngSubmit)="deletar()">Apagar histórico</button>
         </div>
       </div>
 

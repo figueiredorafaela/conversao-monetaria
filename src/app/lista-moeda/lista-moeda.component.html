@@ -1,58 +1,60 @@
-<div class="row">
-  <div class="col-lg-6 mx-auto">
-    <div
-      class="card mt-2 mx-auto p-4 bg-light shadow p-3 mb-2 bg-white rounded"
-    >
-      <div class="container">
-        <div class="col-lg-6 mx-auto">
-          <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default"
-                >Moeda/País/ID</span
-              >
-            </div>
-            <input #campoBusca type="search" class="form-control" />
+<div class="col-lg-6 mx-auto">
+  <div class="card mt-2 mx-auto p-4 bg-light shadow p-3 mb-2 bg-white rounded">
+    <div class="container">
+      <div class="col-lg-6 mx-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Moeda/País/ID</span
+            >
           </div>
+          <input #campoBusca type="search" class="form-control" />
         </div>
-        <div class="w-100 mx-auto">
-          <table
-            id="tabela-moeda"
-            class="table table-striped table-bordered table-sm table-light shadow p-3 mb-3"
-            cellspacing="0"
-            width="100%"
-          >
-            <thead>
-              <tr>
-                <th (click)="sort('moeda')" class="th-sm">
-                  Moeda
-                  <span *ngIf="key == 'moeda'">{{ reverse ? "▲" : "▼" }}</span>
-                </th>
-                <th (click)="sort('id')" class="th-sm">
-                  ID
-                  <span *ngIf="key == 'id'">{{ reverse ? "▲" : "▼" }}</span>
-                </th>
-                <th (click)="sort('nome')" class="th-sm">
-                  País
-                  <span *ngIf="key == 'nome'">{{ reverse ? "▲" : "▼" }}</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="
-                  let moeda of moedas | arrayFiltro : filtro| orderBy : key : reverse| paginate: { itemsPerPage: 5, currentPage: paginaAtual }; let nome = index;">
-                <td>{{ moeda.id }}</td>
-                <td>{{ moeda.nome }}</td>
-                <td>{{ moeda.simbolo }}</td>
-              </tr>
-            </tbody>
-            <pagination-controls
-              (pageChange)="paginaAtual = $event"
-              previousLabel="Anterior"
-              nextLabel="Próximo"
-            ></pagination-controls>
-          </table>
-        </div>
+      </div>
+      <div class="w-100 mx-auto">
+        <table
+          id="tabela-moeda"
+          class="table table-striped table-bordered table-sm table-light shadow p-3 mb-3"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th (click)="sort('moeda')" class="th-sm">
+                Moeda
+                <span *ngIf="key == 'moeda'">{{ reverse ? "▲" : "▼" }}</span>
+              </th>
+              <th (click)="sort('id')" class="th-sm">
+                ID
+                <span *ngIf="key == 'id'">{{ reverse ? "▲" : "▼" }}</span>
+              </th>
+              <th (click)="sort('nome')" class="th-sm">
+                País
+                <span *ngIf="key == 'nome'">{{ reverse ? "▲" : "▼" }}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let moeda of moedas
+                  | arrayFiltro : filtro
+                  | paginate : { itemsPerPage: 5, currentPage: paginaAtual }
+                  | orderBy : key : reverse;
+                let nome = index
+              "
+            >
+              <td>{{ moeda.id }}</td>
+              <td>{{ moeda.nome }}</td>
+              <td>{{ moeda.simbolo }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls
+          (pageChange)="paginaAtual = $event"
+          previousLabel=""
+          nextLabel=""
+        ></pagination-controls>
       </div>
     </div>
   </div>
