@@ -1,5 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
 
+header{
+  margin: 0;
+}
 .navbar-brand {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;

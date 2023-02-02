@@ -1,5 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, debounceTime } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { IMoedas } from '../interfaces/IMoedas';
+import { ISimbolos } from '../interfaces/ISimbolos';
 import { MoedaService } from '../services/moeda.service';
 
 @Component({
@@ -7,42 +11,8 @@ import { MoedaService } from '../services/moeda.service';
   templateUrl: './lista-moeda.component.html',
   styleUrls: ['./lista-moeda.component.css']
 })
-export class ListaMoedaComponent implements OnInit {
-
-  moedas: Array<{ id: string, nome: string}> = [];
-  filtro: string = '';
-  paginaAtual = 1;
-  key: string = 'nome';
-  reverse: boolean = false;
-
-  constructor(private moedaService: MoedaService) { }
+export class ListaMoedaComponent {
 
 
-
-  ngOnInit() {
-    this.moedaService.listar().subscribe(
-      retornoApi => this.moedas = retornoApi
-  )}
-
-  @ViewChild('campoBusca')
-  campoBusca!: ElementRef<HTMLInputElement>;
-
-  ngAfterViewInit() {
-    fromEvent(this.campoBusca.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(20)
-      )
-      .subscribe((e: Event) => {
-
-
-        const target = e.target as HTMLInputElement;
-        this.filtro = target.value;
-      });
-  }
-
-  sort(key: string) {
-    this.key = key;
-    this.reverse = !this.reverse;
-}
 
 }

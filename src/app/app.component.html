@@ -1,27 +1,6 @@
-<header class="navbar navbar-expand-lg bg-light sticky-top">
-  <div class="container">
-    <a class="navbar-brand" routerLink="converte-moeda">Conversor</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbar_collapse"
-      aria-controls="navbar_collapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="collapse navbar-collapse justify-content-end"
-      id="navbar_collapse"
-    >
-      <div class="navbar-nav">
-        <a class="nav-link" routerLink="lista-moeda">Lista de moedas</a>
-        <a class="nav-link" routerLink="historico">Histórico de conversões</a>
-      </div>
-    </div>
-  </div>
+<header>
+  <a routerLink="historico">Histórico</a>
+  <a routerLink="lista-moeda">Moedas</a>
 </header>
 <main>
   <router-outlet></router-outlet>

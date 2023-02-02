@@ -1,109 +1,101 @@
-<main>
-  <div class="container">
-    <div class="text-center mt-6">
-      <h1 class="font-weight-bold text-light">Conversor de moedas</h1>
-    </div>
-    <div class="col-lg-8 mx-auto">
-      <
-      <div class="d-flex justify-content-evenly">
-        <div
-          class="card mt-2 mx-auto bg-light shadow p-3 mb-5 bg-white rounded"
-        >
-          <div class="card-body bg-light">
-            <form id="conversao-form" role="form" (ngSubmit)="converter()">
-              <div class="controls">
-                <div class="form-group">
-                  <label for="form-valor">Valor *</label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input
-                      id="form-valor"
-                      type="number"
-                      name="valor"
-                      class="form-control"
-                      placeholder="Digite o valor a ser convertido *"
-                      required="required"
-                      data-error="É necessário preencher um valor."
-                      [(ngModel)]="valorInicio"
-                    />
-                  </div>
-                </div>
-              </div>
-
+<section class="container">
+  <div class="text-center mt-6">
+    <h1 class="font-weight-bold text-light">Conversor de moedas</h1>
+  </div>
+  <div class="col-lg-8 mx-auto">
+    <div class="d-flex justify-content-evenly">
+      <div class="card mt-2 mx-auto bg-light shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body bg-light">
+          <form role="form" (ngSubmit)="converter()">
+            <div class="controls">
               <div class="form-group">
-                <label for="form-moeda">Converter de *</label>
-                <select
-                  id="form_moeda"
-                  name="moeda"
-                  class="form-control"
-                  required="required"
-                  data-error="Selecione a moeda."
-                  [(ngModel)]="moedaOriginal"
-                >
-                  <option value="" selected disabled>
-                    --Selecione a moeda--
-                  </option>
-                  <option>Dólar americano (USD)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="form-moeda">Para*</label>
-                <select
-                  id="form_moeda"
-                  name="moeda"
-                  class="form-control"
-                  required="required"
-                  data-error="Selecione a moeda."
-                  [(ngModel)]="moedaDestino"
-                >
-                  <option value="" selected disabled>
-                    --Selecione a moeda--
-                  </option>
-                  <option>Real brasileiro (BRL)</option>
-                </select>
-              </div>
-
-              <div class="d-grid gap-2 mx-auto">
-                <button class="btn btn-primary btn-submit">Converter</button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-
-          <div
-            class="card mt-2 mb-5 mx-auto bg-light shadow p-3 bg-white rounded"
-          >
-            <div class="card-body bg-light">
-              <div class="container">
-                <div class="form-group">
-                  <label for="valor_convertido">Valor convertido</label>
-                  <div class="input-group">
-                    <span class="input-group-text">$</span>
-                    <input
-                      id="valor_convertido"
-                      type="number"
-                      name="valor_convertido"
-                      class="form-control"
-                      placeholder="0,00"
-                      [(ngModel)]="valorSaida"
-                    />
-                  </div>
-                  <label for="taxa-cotacao">Taxa de cotação</label>
+                <label for="form-valor">Valor *</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">$</span>
                   <input
-                    id="taxa-cotacao"
-                    type="text"
-                    name="taxa_cotacao"
+                    id="form-valor"
+                    type="number"
+                    name="valor"
                     class="form-control"
-                    placeholder="0,00"
-                    [(ngModel)]="taxaCotacao"
+                    placeholder="Digite o valor a ser convertido *"
+                    required="required"
+                    data-error="É necessário preencher um valor."
+                    [(ngModel)]="valorEntrada"
                   />
                 </div>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-moeda">Converter de *</label>
+              <select
+                id="form_moeda"
+                name="moeda"
+                class="form-control"
+                required="required"
+                data-error="Selecione a moeda."
+                [(ngModel)]="moedaOriginal"
+              >
+                <option value="" selected disabled>
+                  --Selecione a moeda--
+                </option>
+                <option>Dólar americano (USD)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-moeda">Para*</label>
+              <select
+                id="form_moeda"
+                name="moeda"
+                class="form-control"
+                required="required"
+                data-error="Selecione a moeda."
+                [(ngModel)]="moedaDestino"
+              >
+                <option value="" selected disabled>
+                  --Selecione a moeda--
+                </option>
+                <option>Real brasileiro (BRL)</option>
+              </select>
+            </div>
+
+            <div class="d-grid gap-2 mx-auto">
+              <button type="submit" class="btn btn-primary btn-submit">Converter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card mt-2 mb-5 mx-auto bg-light shadow p-3 bg-white rounded">
+        <div class="card-body bg-light">
+          <div class="container">
+            <div class="form-group">
+              <label for="valor_convertido">Valor convertido</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input
+                  id="valor_convertido"
+                  type="number"
+                  name="valor_convertido"
+                  class="form-control"
+                  placeholder="0,00"
+                  [(ngModel)]="valorSaida"
+                />
+              </div>
+              <label for="taxa-cotacao">Taxa de cotação</label>
+              <input
+                id="taxa-cotacao"
+                type="text"
+                name="taxa_cotacao"
+                class="form-control"
+                placeholder="0,00"
+                [(ngModel)]="taxa"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
-</main>
+  </div>
+</section>

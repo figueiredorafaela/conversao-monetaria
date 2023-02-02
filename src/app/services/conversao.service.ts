@@ -1,4 +1,7 @@
+import { Conversao } from '../interfaces/conversao.model';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +9,9 @@ import { Injectable } from '@angular/core';
 export class ConversaoService {
 
   private listaConversoes: any[];
+  private url = 'http://localhost:3000/conversoes/'
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     this.listaConversoes = [];
   }
 
@@ -15,10 +19,16 @@ export class ConversaoService {
     return this.listaConversoes;
   }
 
-  adicionar(conversao: any) {
+  adicionar(conversao: Conversao) {
     this.apurar(conversao);
-    this.listaConversoes.push(conversao);
+
+    return this.httpClient.post<Conversao>(this.url, conversao);
   }
+
+  todas() {
+    return this.httpClient.get<Conversao[]>(this.url)
+  }
+
 
   private apurar(conversao: any) {
     conversao.data = new Date();
