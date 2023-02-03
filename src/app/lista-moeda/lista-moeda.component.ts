@@ -11,8 +11,38 @@ import { MoedaService } from '../services/moeda.service';
   templateUrl: './lista-moeda.component.html',
   styleUrls: ['./lista-moeda.component.css']
 })
-export class ListaMoedaComponent {
+export class ListaMoedaComponent implements OnInit {
 
 
+  @ViewChild('MatSort')
+  matSort!: MatSort;
+  @ViewChild('MatPaginator')
+  matPaginator!: MatPaginator;
+
+  mostraMoeda: string[] = ['description', 'code'];
+  matTable!: MatTableDataSource<IMoedas>;
+
+  listaMoedas: IMoedas[] = [];
+
+  constructor(private moedaService: MoedaService) { }
+
+  getSimbolos() {
+    this.moedaService.getSymbols().subscribe((simbol: ISimbolos) => {
+      const result = Object.keys(simbol.symbols).map(function (a) {
+
+        return simbol.symbols[a];
+      });
+
+      this.matTable.paginator = this.matPaginator;
+      this.matTable.sort = this.matSort
+      this.matTable = new MatTableDataSource(this.listaMoedas);
+      this.listaMoedas = result;
+
+    })
+  }
+
+  ngOnInit() {
+    this.getSimbolos();
+  }
 
 }

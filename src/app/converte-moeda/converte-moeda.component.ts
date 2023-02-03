@@ -16,8 +16,8 @@ export class ConverteMoedaComponent implements OnInit {
   @Output() aoConverter = new EventEmitter<any>();
 
   valorEntrada: number = 0;
-  moedaOriginal: any;
-  moedaDestino: any;
+  moedaOriginal!: string;
+  moedaDestino!: string;
   valorSaida: number = 0;
   taxa: number = 0;
 
