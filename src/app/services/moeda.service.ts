@@ -1,4 +1,3 @@
-import { ISimbolos } from '../interfaces/ISimbolos';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,12 +10,12 @@ export class MoedaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getSymbols(): Observable<ISimbolos> {
-    return this.httpClient.get<ISimbolos>(this.urlApi + '/symbols');
+  public getSymbols(): Observable<any> {
+    return this.httpClient.get<any>(this.urlApi + '/symbols');
   }
 
   public converterMoeda(moedaOriginal: string, moedaDestino: string, valor: number) {
-    const url = `${this.urlApi}/convert?from=${moedaOriginal}&to=${moedaDestino}&amount=${valor}`
+    const url = `${ this.urlApi }/convert?from=${ moedaOriginal }&to=${ moedaDestino }&amount=${ valor }&places=2`
     return this.httpClient.get(this.urlApi);
   }
 }

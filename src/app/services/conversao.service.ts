@@ -1,4 +1,4 @@
-import { Conversao } from '../interfaces/conversao.model';
+import { Conversao } from '../interfaces/IConversao';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

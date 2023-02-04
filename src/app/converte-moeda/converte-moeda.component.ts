@@ -1,4 +1,4 @@
-import { Conversao } from './../interfaces/conversao.model';
+import { Conversao } from '../interfaces/IConversao';
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -34,7 +34,7 @@ export class ConverteMoedaComponent implements OnInit {
   converter() {
     this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
       this.valorSaida = x['result'];
-      this.taxa = Object.values(x['info']);
+      this.taxa = x['info']['rate'];
 
     })
     this.limparCampos();

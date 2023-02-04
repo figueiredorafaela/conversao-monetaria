@@ -1,4 +1,4 @@
-import { Conversao } from '../interfaces/conversao.model';
+import { Conversao } from '../interfaces/IConversao';
 import { ConversaoService } from './../services/conversao.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
