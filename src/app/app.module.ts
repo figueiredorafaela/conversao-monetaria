@@ -15,6 +15,8 @@ import { HistoricoComponent } from './historico/historico.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -26,8 +28,7 @@ registerLocaleData(localePt, 'pt')
     ConverteMoedaComponent,
     ArrayFiltroPipe,
     MenuComponent,
-    HistoricoComponent,
-
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,8 @@ registerLocaleData(localePt, 'pt')
     OrderModule,
     NgxPaginationModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }

@@ -32,7 +32,7 @@ export class ConverteMoedaComponent implements OnInit {
   }
 
   converter() {
-    this.moedaService.converterMoeda(this.moedaOriginal , this.moedaDestino, this.valorEntrada).subscribe((x) => {
+    this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
       this.valorSaida = x['result'];
       this.taxa = Object.values(x['info']);
 
@@ -44,7 +44,7 @@ export class ConverteMoedaComponent implements OnInit {
     this.valorEntrada = 0
   }
 
-  guardar(){
+  guardar() {
     const conversao = {
       data: this.data,
       valorEntrada: this.valorEntrada,
@@ -56,18 +56,17 @@ export class ConverteMoedaComponent implements OnInit {
 
     this.conversao.push(conversao);
     localStorage.setItem('conversao', JSON.stringify(this.conversao));
-    this.lerLocalStorage();
   }
 
 
   ngOnInit() {
-   this.moedaService.getSymbols().subscribe((x) => {
-    const object = Object.keys(x.symbols).map(function (moeda) {
-      let final = x.symbols[moeda];
-      return final;
+    this.moedaService.getSymbols().subscribe((x) => {
+      const object = Object.keys(x.symbols).map(function (moeda) {
+        let final = x.symbols[moeda];
+        return final;
+      });
+      this.moedas = object;
     });
-    this.moedas = object;
-   });
   }
 
 

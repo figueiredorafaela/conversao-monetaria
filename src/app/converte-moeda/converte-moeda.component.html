@@ -6,10 +6,10 @@
     <div class="d-flex justify-content-evenly">
       <div class="card mt-2 mx-auto bg-light shadow p-3 mb-5 bg-white rounded">
         <div class="card-body bg-light">
-          <form role="form" (ngSubmit)="converter()">
+          <mat-form-field>
             <div class="controls">
               <div class="form-group">
-                <label for="form-valor">Valor *</label>
+                <mat-label for="form-valor">Valor *</mat-label>
                 <div class="input-group mb-3">
                   <span class="input-group-text">$</span>
                   <input
@@ -19,7 +19,10 @@
                     class="form-control"
                     placeholder="Digite o valor a ser convertido *"
                     required="required"
+                    aria-required="true"
                     data-error="É necessário preencher um valor."
+                    min="1"
+                    matInput
                     [(ngModel)]="valorEntrada"
                   />
                 </div>
@@ -28,42 +31,60 @@
 
             <div class="form-group">
               <label for="form-moeda">Converter de *</label>
-              <select
+              <mat-select
                 id="form_moeda"
                 name="moeda"
                 class="form-control"
                 required="required"
+                aria-required="true"
                 data-error="Selecione a moeda."
                 [(ngModel)]="moedaOriginal"
               >
-                <option value="" selected disabled>
-                  --Selecione a moeda--
-                </option>
-                <option>Dólar americano (USD)</option>
-              </select>
+                <mat-option
+                  *ngFor="let moeda of moedas"
+                  [value]="moeda.code"
+                  value=""
+                  selected
+                  disabled
+                >
+                  {{ moeda.code }} | {{ moeda.description }}
+                </mat-option>
+              </mat-select>
             </div>
 
             <div class="form-group">
-              <label for="form-moeda">Para*</label>
-              <select
+              <mat-label for="form-moeda">Para*</mat-label>
+              <mat-select
                 id="form_moeda"
                 name="moeda"
                 class="form-control"
                 required="required"
+                aria-required="true"
                 data-error="Selecione a moeda."
                 [(ngModel)]="moedaDestino"
               >
-                <option value="" selected disabled>
-                  --Selecione a moeda--
-                </option>
-                <option>Real brasileiro (BRL)</option>
-              </select>
+                <mat-option
+                  *ngFor="let moeda of moedas"
+                  [value]="moeda.code"
+                  value=""
+                  selected
+                  disabled
+                >
+                  {{ moeda.code }} | {{ moeda.description }}
+                </mat-option>
+              </mat-select>
             </div>
 
             <div class="d-grid gap-2 mx-auto">
-              <button type="submit" class="btn btn-primary btn-submit">Converter</button>
+              <button
+                (click)="converter()"
+                type="submit"
+                class="btn btn-primary btn-submit"
+              >
+                Converter
+              </button>
             </div>
-          </form>
+          </mat-form-field>
         </div>
       </div>
 
@@ -79,6 +100,7 @@
                   type="number"
                   name="valor_convertido"
                   class="form-control"
+                  readonly
                   placeholder="0,00"
                   [(ngModel)]="valorSaida"
                 />
@@ -88,6 +110,7 @@
                 id="taxa-cotacao"
                 type="text"
                 name="taxa_cotacao"
+                readonly
                 class="form-control"
                 placeholder="0,00"
                 [(ngModel)]="taxa"
