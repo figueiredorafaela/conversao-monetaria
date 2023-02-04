@@ -1,3 +1,4 @@
+import { IMoedas } from './../interfaces/IMoedas';
 import { Conversao } from '../interfaces/IConversao';
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,17 +12,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class ConverteMoedaComponent implements OnInit {
 
-  moedas: any[] = [];
+  moedas: IMoedas[] = [];
+  conversao: Conversao[] = [];
 
-  conversao: Conversao[] = []
-  form = FormGroup;
+  form: FormGroup;
 
-  valorEntrada: any;
-  data!: any;
-  moedaOriginal!: any;
-  moedaDestino!: any;
-  valorSaida: any;
+  valorEntrada!: number;
+  moedaOriginal!: string;
+  moedaDestino!: string;
+  valorSaida!: number;
   taxa: any;
+  data!: any;
 
   constructor(private moedaService: MoedaService) {
     this.form = new FormGroup({
@@ -31,17 +32,30 @@ export class ConverteMoedaComponent implements OnInit {
     });
   }
 
-  converter() {
-    this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
-      this.valorSaida = x['result'];
-      this.taxa = x['info']['rate'];
-
-    })
-    this.limparCampos();
+  ngOnInit() {
+    this.getItem()
+    this.moedaService.getSymbols().subscribe((x) => {
+      const object = Object.keys(x.symbols).map(function (moeda) {
+        let final = x.symbols[moeda];
+        console.log('let final')
+        console.table(final);
+        return final;
+      });
+      this.moedas = object;
+      console.log('moedas')
+      console.table(this.moedas)
+    });
   }
 
-  limparCampos() {
-    this.valorEntrada = 0
+  converter() {
+    this.moedaService.converterMoeda(
+      this.moedaOriginal,
+      this.moedaDestino,
+      this.valorEntrada)
+      .subscribe((x: any) => {
+        this.valorSaida = x["result"];
+        this.taxa = x['info']['rate'];
+    })
   }
 
   guardar() {
@@ -53,21 +67,15 @@ export class ConverteMoedaComponent implements OnInit {
       moedaDestino: this.moedaDestino,
       taxa: this.taxa,
     };
-
+    this.getItem();
     this.conversao.push(conversao);
+    console.log(conversao)
+    console.log(conversao);
     localStorage.setItem('conversao', JSON.stringify(this.conversao));
   }
 
-
-  ngOnInit() {
-    this.moedaService.getSymbols().subscribe((x) => {
-      const object = Object.keys(x.symbols).map(function (moeda) {
-        let final = x.symbols[moeda];
-        return final;
-      });
-      this.moedas = object;
-    });
+  getItem(){
+    this.conversao = JSON.parse(localStorage.getItem('conversao')!) || [];
   }
-
 
 }

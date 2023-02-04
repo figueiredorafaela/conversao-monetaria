@@ -1,4 +1,3 @@
-import { Conversao } from '../interfaces/IConversao';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -23,6 +22,19 @@ export class ListaMoedaComponent implements OnInit {
   listaMoedas: IMoedas[] = [];
 
   constructor(private moedaService: MoedaService) { }
+
+  getSymbols(){
+    this.moedaService.getSymbols().subscribe((x) => {
+      var object = Object.keys(x.symbols).map(function (moeda) {
+        let resul = x.symbols[moeda];
+        return resul;
+      });
+      this.listaMoedas = object;
+      this.matTable = new MatTableDataSource(this.listaMoedas);
+      this.matTable.paginator = this.matPaginator;
+      this.matTable.sort = this.matSort;
+    });
+  }
 
 
   ngOnInit() {

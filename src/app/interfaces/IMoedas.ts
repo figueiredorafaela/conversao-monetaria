@@ -1,4 +1,4 @@
 export interface IMoedas {
-  code: String;
-  description: String;
+  code: string;
+  description: string;
 }

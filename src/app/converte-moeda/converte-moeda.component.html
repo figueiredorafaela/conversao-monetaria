@@ -6,10 +6,10 @@
     <div class="d-flex justify-content-evenly">
       <div class="card mt-2 mx-auto bg-light shadow p-3 mb-5 bg-white rounded">
         <div class="card-body bg-light">
-          <mat-form-field>
+          <mat-form-field class="form-group">
             <div class="controls">
               <div class="form-group">
-                <mat-label for="form-valor">Valor *</mat-label>
+                <mat-label for="form-valor">Valor</mat-label>
                 <div class="input-group mb-3">
                   <span class="input-group-text">$</span>
                   <input
@@ -30,22 +30,20 @@
             </div>
 
             <div class="form-group">
-              <label for="form-moeda">Converter de *</label>
+              <label for="form-moeda">Converter de</label>
               <mat-select
                 id="form_moeda"
-                name="moeda"
+                name="moedaOriginal"
                 class="form-control"
                 required="required"
                 aria-required="true"
                 data-error="Selecione a moeda."
-                [(ngModel)]="moedaOriginal"
+                [(value)]="moedaOriginal"
               >
                 <mat-option
                   *ngFor="let moeda of moedas"
                   [value]="moeda.code"
-                  value=""
                   selected
-                  disabled
                 >
                   {{ moeda.code }} | {{ moeda.description }}
                 </mat-option>
@@ -53,22 +51,19 @@
             </div>
 
             <div class="form-group">
-              <mat-label for="form-moeda">Para*</mat-label>
+              <mat-label for="form-moeda">Para</mat-label>
               <mat-select
                 id="form_moeda"
-                name="moeda"
+                name="moedaDestino"
                 class="form-control"
                 required="required"
                 aria-required="true"
                 data-error="Selecione a moeda."
-                [(ngModel)]="moedaDestino"
+                [(value)]="moedaDestino"
               >
                 <mat-option
                   *ngFor="let moeda of moedas"
                   [value]="moeda.code"
-                  value=""
-                  selected
-                  disabled
                 >
                   {{ moeda.code }} | {{ moeda.description }}
                 </mat-option>
@@ -101,6 +96,7 @@
                   name="valor_convertido"
                   class="form-control"
                   readonly
+                  disabled
                   placeholder="0,00"
                   [(ngModel)]="valorSaida"
                 />
@@ -111,6 +107,7 @@
                 type="text"
                 name="taxa_cotacao"
                 readonly
+                disabled
                 class="form-control"
                 placeholder="0,00"
                 [(ngModel)]="taxa"

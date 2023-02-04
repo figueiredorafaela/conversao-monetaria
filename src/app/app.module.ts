@@ -1,4 +1,3 @@
-import { ArrayFiltroPipe } from './pipes/array-filtro.pipe';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +25,6 @@ registerLocaleData(localePt, 'pt')
     AppComponent,
     ListaMoedaComponent,
     ConverteMoedaComponent,
-    ArrayFiltroPipe,
     MenuComponent,
     HistoricoComponent
   ],
