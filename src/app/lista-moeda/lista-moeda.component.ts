@@ -19,7 +19,7 @@ export class ListaMoedaComponent implements OnInit {
 
   matTable!: MatTableDataSource<IMoedas>;
 
-  listaMoedas: IMoedas[] = [];
+  moedas: IMoedas[] = [];
 
   constructor(private moedaService: MoedaService) { }
 
@@ -29,8 +29,10 @@ export class ListaMoedaComponent implements OnInit {
         let resul = x.symbols[moeda];
         return resul;
       });
-      this.listaMoedas = object;
-      this.matTable = new MatTableDataSource(this.listaMoedas);
+      this.moedas = object;
+      console.log("lista moedas")
+      console.table(this.moedas)
+      this.matTable = new MatTableDataSource(this.moedas);
       this.matTable.paginator = this.matPaginator;
       this.matTable.sort = this.matSort;
     });

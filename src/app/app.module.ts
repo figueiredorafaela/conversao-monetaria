@@ -14,8 +14,9 @@ import { HistoricoComponent } from './historico/historico.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -37,7 +38,8 @@ registerLocaleData(localePt, 'pt')
     NgxPaginationModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }

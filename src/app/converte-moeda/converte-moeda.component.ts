@@ -37,13 +37,11 @@ export class ConverteMoedaComponent implements OnInit {
     this.moedaService.getSymbols().subscribe((x) => {
       const object = Object.keys(x.symbols).map(function (moeda) {
         let final = x.symbols[moeda];
-        console.log('let final')
-        console.table(final);
         return final;
       });
       this.moedas = object;
-      console.log('moedas')
-      console.table(this.moedas)
+      console.log("moedas")
+      console.log(this.moedas)
     });
   }
 
@@ -56,6 +54,7 @@ export class ConverteMoedaComponent implements OnInit {
         this.valorSaida = x["result"];
         this.taxa = x['info']['rate'];
     })
+    console.log("Pedido de conversao")
   }
 
   guardar() {

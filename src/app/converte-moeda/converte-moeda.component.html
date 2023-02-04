@@ -43,7 +43,6 @@
                 <mat-option
                   *ngFor="let moeda of moedas"
                   [value]="moeda.code"
-                  selected
                 >
                   {{ moeda.code }} | {{ moeda.description }}
                 </mat-option>
@@ -62,10 +61,10 @@
                 [(value)]="moedaDestino"
               >
                 <mat-option
-                  *ngFor="let moeda of moedas"
-                  [value]="moeda.code"
+                  *ngFor="let moedas of moedas"
+                  [value]="moedas.code"
                 >
-                  {{ moeda.code }} | {{ moeda.description }}
+                  {{ moedas.code }} | {{ moedas.description }}
                 </mat-option>
               </mat-select>
             </div>
