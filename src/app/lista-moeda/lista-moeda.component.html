@@ -2,64 +2,60 @@
   <div class="text-center mt-6">
     <h1 class="font-weight-bold text-light">Lista de moedas</h1>
   </div>
-  <div class="col-lg-6 mx-auto">
-    <div
-      class="card mt-2 mx-auto p-4 bg-light shadow p-3 mb-2 bg-white rounded"
-    >
-      <mat-form-field>
-        <div class="col-lg-6 mx-auto">
-          <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default"
-                >Moeda/Código</span
-              >
-            </div>
-            <input
-              matInput
-              (keyup)="filtro($event)"
-              placeholder="Ex: EUR"
-              input
-              type="search"
-              class="form-control"
-            />
+
+  <div class="card mt-2 mx-auto bg-light shadow mb-2 bg-white rounded">
+    <mat-form-field>
+      <div class="col-lg-6 mx-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Moeda/Código</span
+            >
           </div>
+          <input
+            matInput
+            (keyup)="filtro($event)"
+            placeholder="Ex: EUR"
+            input
+            type="search"
+            class="form-control"
+          />
         </div>
-      </mat-form-field>
-
-      <div class="w-100 mx-auto">
-        <mat-table
-          id="tabela-moeda"
-          mat-table
-          [dataSource]="dataSource"
-          matSort
-          sort="matSort"
-          class="table table-striped table-bordered table-sm table-light shadow p-3 mb-3"
-          cellspacing="0"
-          width="100%"
-        >
-          <ng-container matColumnDef="code">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">
-              Código
-            </th>
-            <td mat-cell *matCellDef="let row">{{ row.code }}</td>
-          </ng-container>
-          <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">
-              Descrição
-            </th>
-            <td mat-cell *matCellDef="let row">{{ row.description }}</td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="mostraMoeda"></tr>
-          <tr mat-row *matRowDef="let row; columns: mostraMoeda"></tr>
-        </mat-table>
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 15, 25]"
-          showFirstLastButtons
-          aria-label="Listagem de moedas"
-          [length]="this.moedas.length"
-        ></mat-paginator>
       </div>
+    </mat-form-field>
+    <div class="mx-auto">
+      <mat-table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        sort="matSort"
+        class="table table-sm table-light mb-3"
+        cellspacing="0"
+        width="100%"
+      >
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">
+            Código
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">
+            Descrição
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="mostraMoeda"></tr>
+        <tr mat-row *matRowDef="let row; columns: mostraMoeda"></tr>
+      </mat-table>
     </div>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15, 25]"
+      showFirstLastButtons
+      aria-label="Listagem de moedas"
+      [length]="this.moedas.length"
+    ></mat-paginator>
   </div>
 </section>
