@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -39,7 +40,8 @@ registerLocaleData(localePt, 'pt')
     MatPaginatorModule,
     MatFormFieldModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    MatTableModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }

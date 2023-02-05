@@ -13,44 +13,32 @@
               >Moeda/Símbolo</span
             >
           </div>
-          <input type="search" class="form-control" #campoBusca />
+          <input type="search" class="form-control" />
         </div>
       </div>
       <div class="w-100 mx-auto">
         <table
           id="tabela-moeda"
-          mat-table
-          matSort
+          mat-table [dataSource]="dataSource"  matSort sort="matSort"
           class="table table-striped table-bordered table-sm table-light shadow p-3 mb-3"
           cellspacing="0"
           width="100%"
         >
-          <thead>
-            <tr>
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                mat-sort-header
-                class="th-sm"
-              >
-                Moeda
-              </th>
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                mat-sort-header
-                class="th-sm"
-              >
-                Descrição
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let moeda of moedas">
-              <td mat-cell *matCellDef="let moeda">{{ moeda.code }}</td>
-              <td mat-cell *matCellDef="let moeda">{{ moeda.description }}</td>
-            </tr>
-          </tbody>
+          <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">
+              Código
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">
+              Descrição
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="mostraMoeda"></tr>
+          <tr mat-row *matRowDef="let row; columns: mostraMoeda"></tr>
         </table>
         <mat-paginator
           [pageSizeOptions]="[5, 10, 15, 25]"

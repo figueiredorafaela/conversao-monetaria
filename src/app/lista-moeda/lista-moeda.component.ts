@@ -13,11 +13,11 @@ import { MoedaService } from '../services/moeda.service';
 export class ListaMoedaComponent implements OnInit {
 
 
-  @ViewChild(MatPaginator, { static: true }) matPaginator!: MatPaginator;
-  @ViewChild(MatSort, { static: true }) matSort!: MatSort;
+  @ViewChild(MatPaginator) matPaginator!: MatPaginator;
+  @ViewChild(MatSort) matSort!: MatSort;
 
 
-  mostraMoeda: string[] = ['description', 'code'];
+  mostraMoeda = ['description', 'code'];
   dataSource: MatTableDataSource<IMoedas>;
   moedas: IMoedas[] = [];
 
@@ -30,8 +30,6 @@ export class ListaMoedaComponent implements OnInit {
         return resul;
       });
       this.moedas = object;
-      console.log("lista moedas")
-      console.table(this.moedas)
       this.dataSource = new MatTableDataSource(this.moedas);
       this.dataSource.paginator = this.matPaginator;
       this.dataSource.sort = this.matSort;
@@ -40,10 +38,11 @@ export class ListaMoedaComponent implements OnInit {
 
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<IMoedas>
     this.moedaService.getSymbols().subscribe((x) => {
       this.dataSource.data = Object.values(x.symbols);
     });
-    this.dataSource.paginator = this.matPaginator;
+    this.dataSource.paginator = this.matPaginator
     this.dataSource.sort = this.matSort;
   }
 

@@ -14,7 +14,7 @@ export class MoedaService {
 
 
   public getSymbols(): Observable<any> {
-    console.log("get simbolos service moeda")
+    console.log("getSymbols moeda.service")
     return this.httpClient.get<any>(this.urlApi + '/symbols');
   }
 
