@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt'
 import { HistoricoComponent } from './historico/historico.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -19,7 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatTableModule } from '@angular/material/table';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 registerLocaleData(localePt, 'pt')
@@ -43,7 +44,9 @@ registerLocaleData(localePt, 'pt')
     MatSelectModule,
     MatTableModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }
