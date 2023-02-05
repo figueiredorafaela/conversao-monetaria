@@ -6,25 +6,25 @@
     <div
       class="card mt-2 mx-auto p-4 bg-light shadow p-3 mb-2 bg-white rounded"
     >
-      <div class="col-lg-6 mx-auto">
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default"
-              >Moeda/Símbolo</span
-            >
+      <mat-form-field>
+        <div class="col-lg-6 mx-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >Moeda/Código</span
+              >
+            </div>
+            <input
+              matInput
+              (keyup)="filtro($event)"
+              placeholder="Ex: EUR"
+              input
+              type="search"
+              class="form-control"
+            />
           </div>
         </div>
-        <mat-form-field>
-          <input
-            matInput
-            (keyup)="filtro($event)"
-            placeholder="Ex: EUR"
-            input
-            type="search"
-            class="form-control"
-          />
-        </mat-form-field>
-      </div>
+      </mat-form-field>
 
       <div class="w-100 mx-auto">
         <table
