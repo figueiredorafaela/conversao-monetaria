@@ -23,6 +23,15 @@ export class ListaMoedaComponent implements OnInit {
 
   constructor(private moedaService: MoedaService) { }
 
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource<IMoedas>
+    this.moedaService.getSymbols().subscribe((x) => {
+      this.dataSource.data = Object.values(x.symbols);
+    });
+    this.dataSource.paginator = this.matPaginator
+    this.dataSource.sort = this.matSort;
+  }
+
   getSymbols(){
     this.moedaService.getSymbols().subscribe((x) => {
       var object = Object.keys(x.symbols).map(function (moeda) {
@@ -36,14 +45,14 @@ export class ListaMoedaComponent implements OnInit {
     });
   }
 
+  filtro(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    };
+  };
 
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource<IMoedas>
-    this.moedaService.getSymbols().subscribe((x) => {
-      this.dataSource.data = Object.values(x.symbols);
-    });
-    this.dataSource.paginator = this.matPaginator
-    this.dataSource.sort = this.matSort;
-  }
+
 
 }
