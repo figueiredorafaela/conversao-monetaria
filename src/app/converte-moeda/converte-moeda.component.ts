@@ -1,5 +1,5 @@
 import { IMoedas } from './../interfaces/IMoedas';
-import { Conversao } from '../interfaces/IConversao';
+import { IConversao } from '../interfaces/IConversao';
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -14,7 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ConverteMoedaComponent implements OnInit {
 
   moedas: IMoedas[] = [];
-  conversao: Conversao[] = [];
+  conversao: IConversao[] = [];
 
   form: FormGroup;
 
