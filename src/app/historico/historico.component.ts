@@ -1,7 +1,6 @@
-import { ConfirmacaoDeleteDialogComponent } from '../confirmacao-delete-dialog/confirmacao-delete-dialog.component';
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { IConversao } from '../interfaces/IConversao';
@@ -41,15 +40,21 @@ export class HistoricoComponent implements OnInit {
   ]
 
   delete(conversao: IConversao) {
-    const dialogRef = this.dialog.open(ConfirmacaoDeleteDialogComponent)
+    const dialogRef = this.dialog.open(confirmacaoDeleteDialog, {width: '250px',})
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog');
       if (result) {
         const index = this.dataSource.data.indexOf(conversao);
+
         localStorage.setItem('conversao', JSON.stringify(this.dataSource.data));
         this.dataSource.data = JSON.parse(localStorage.getItem('conversao')!) || [];
       }
     });
   }
 
+}
+
+export class confirmacaoDeleteDialog {
+  constructor(public dialogRef: MatDialogRef<confirmacaoDeleteDialog>) {}
 }

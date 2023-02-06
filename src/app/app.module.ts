@@ -28,7 +28,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCommonModule} from '@angular/material/core'
 import {MatIconModule} from '@angular/material/icon';
-import { ConfirmacaoDeleteDialogComponent } from './confirmacao-delete-dialog/confirmacao-delete-dialog.component';
 
 
 registerLocaleData(localePt, 'pt')
@@ -39,7 +38,6 @@ registerLocaleData(localePt, 'pt')
     ConverteMoedaComponent,
     MenuComponent,
     HistoricoComponent,
-    ConfirmacaoDeleteDialogComponent
    ],
   imports: [
     BrowserModule,
