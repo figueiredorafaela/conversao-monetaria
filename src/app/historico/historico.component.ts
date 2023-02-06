@@ -1,10 +1,11 @@
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { IConversao } from '../interfaces/IConversao';
 import { MatPaginator } from '@angular/material/paginator';
+import { ConfirmaDeleteDialogComponent } from '../confirma-delete-dialog/confirma-delete-dialog.component';
 
 @Component({
   selector: 'app-historico',
@@ -16,11 +17,7 @@ export class HistoricoComponent implements OnInit {
   @ViewChild(MatSort) matSort: MatSort;
   @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
-  dialog: MatDialog;
-
-  constructor(private service: MoedaService, dialog: MatDialog) {
-    this.dialog = dialog;
-  }
+  constructor(private service: MoedaService, public dialog: MatDialog) { }
 
   dataSource = new MatTableDataSource<IConversao>();
 
@@ -39,11 +36,10 @@ export class HistoricoComponent implements OnInit {
     'deleta'
   ]
 
-  delete(conversao: IConversao) {
-    const dialogRef = this.dialog.open(confirmacaoDeleteDialog, {width: '250px',})
+  deletar(conversao: IConversao) {
+    const dialogRef = this.dialog.open(ConfirmaDeleteDialogComponent, {width: '400px', height: '120px',})
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('dialog');
       if (result) {
         const index = this.dataSource.data.indexOf(conversao);
 
@@ -53,8 +49,4 @@ export class HistoricoComponent implements OnInit {
     });
   }
 
-}
-
-export class confirmacaoDeleteDialog {
-  constructor(public dialogRef: MatDialogRef<confirmacaoDeleteDialog>) {}
 }

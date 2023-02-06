@@ -66,8 +66,8 @@
           <ng-container matColumnDef="deleta">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Apagar</th>
             <td mat-cell *matCellDef="let conversao">
-              <button mat-button mat-raised-button (click)="delete(conversao)">
-                <mat-icon>x</mat-icon>
+              <button mat-button mat-raised-button (click)="deletar(conversao)">
+                <span>&times;</span>
               </button>
             </td>
           </ng-container>
