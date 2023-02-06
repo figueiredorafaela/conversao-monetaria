@@ -4,7 +4,7 @@
   </div>
   <div class="col-lg-8 mx-auto">
     <div class="d-flex justify-content-evenly">
-      <div class="card mt-2 mx-auto bg-light shadow p-3 mb-5 bg-white rounded">
+      <div class="card mx-auto bg-light shadow p-3 mb-5 mt-3 bg-white rounded">
         <div class="card-body bg-light">
           <mat-form-field class="form-group">
             <div class="controls">
@@ -49,7 +49,7 @@
               </mat-select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mt-2">
               <mat-label for="moedaDestino">Para</mat-label>
               <mat-select
                 id="moedaDestino"
@@ -73,7 +73,7 @@
               <button
                 (click)="converter()"
                 type="submit"
-                class="btn btn-primary btn-submit"
+                class="btn btn-primary btn-submit mt-2"
               >
                 Converter
               </button>
@@ -87,7 +87,7 @@
           <div class="container">
             <div class="form-group">
               <label for="valorSaida">Valor convertido</label>
-              <div class="input-group">
+              <div class="input-group mb-3">
                 <span class="input-group-text">$</span>
                 <input
                   id="valorSaida"

@@ -17,15 +17,6 @@ export class HistoricoComponent implements OnInit {
   @ViewChild(MatSort) matSort: MatSort;
   @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
-  constructor(private service: MoedaService, public dialog: MatDialog) { }
-
-  dataSource = new MatTableDataSource<IConversao>();
-
-  ngOnInit() {
-    this.dataSource.data = JSON.parse(localStorage.getItem('conversao')!) || [];
-    this.dataSource.sort = this.matSort;
-  }
-
   mostraMoeda: string[] = [
     'valorEntrada',
     'moedaOriginal',
@@ -36,13 +27,23 @@ export class HistoricoComponent implements OnInit {
     'deleta'
   ]
 
+  constructor(private service: MoedaService, public dialog: MatDialog) { }
+
+  dataSource = new MatTableDataSource<IConversao>();
+
+  ngOnInit() {
+    this.dataSource.data = JSON.parse(localStorage.getItem('conversao')!) || [];
+    this.dataSource.sort = this.matSort;
+  }
+
+
   deletar(conversao: IConversao) {
     const dialogRef = this.dialog.open(ConfirmaDeleteDialogComponent)
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         const index = this.dataSource.data.indexOf(conversao);
-
+        this.dataSource.data.splice(index, 1);
         localStorage.setItem('conversao', JSON.stringify(this.dataSource.data));
         this.dataSource.data = JSON.parse(localStorage.getItem('conversao')!) || [];
       }

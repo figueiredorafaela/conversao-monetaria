@@ -1,6 +1,6 @@
 <section class="container">
   <div class="text-center mt-6">
-    <h1 class="font-weight-bold text-light">Histórico de conversões</h1>
+    <h1 class="font-weight-bold text-light mt-3 mb-5">Histórico de conversões</h1>
   </div>
   <div class="mx-auto">
     <div
@@ -20,7 +20,7 @@
               Valor de entrada
             </th>
             <td *matCellDef="let conversao">
-              {{ conversao.valorInicio }}
+              {{ conversao.valorEntrada }}
             </td>
           </ng-container>
           <ng-container matColumnDef="moedaOriginal">
@@ -84,7 +84,7 @@
             [length]="this.mostraMoeda.length"
           >
           </mat-paginator>
-          <button (click)="deletarTudo()" class="btn btn-danger" type="button">Apagar histórico</button>
+          <button (click)="deletarTudo()" class="btn btn-danger h-25 mt-2 mr-2" type="button">Apagar histórico</button>
         </div>
       </div>
     </div>

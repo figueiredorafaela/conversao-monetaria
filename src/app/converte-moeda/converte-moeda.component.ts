@@ -45,18 +45,6 @@ export class ConverteMoedaComponent implements OnInit {
     });
   }
 
-  converter() {
-    this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
-      this.data = new Date();
-      this.valorSaida = x['result'];
-      this.taxa = x['info'];
-      console.log(this.valorSaida);
-      this.validar();
-    })
-    this.guardar();
-
-  }
-
   guardar() {
     var conversao = {
       data: this.data,
@@ -68,8 +56,18 @@ export class ConverteMoedaComponent implements OnInit {
     };
     this.getItem();
     this.conversao.push(conversao);
-    console.log(conversao);
     localStorage.setItem('conversao', JSON.stringify(this.conversao));
+  }
+
+  converter() {
+    this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
+      this.data = new Date();
+      this.valorSaida = x['result'];
+      this.taxa = x['info'];
+    })
+    this.guardar();
+    this.limparCampo();
+
   }
 
   getItem() {
@@ -80,13 +78,5 @@ export class ConverteMoedaComponent implements OnInit {
     this.valorEntrada = 0;
   }
 
-  validar() {
-    this.moedaService.converterMoeda(this.moedaDestino, 'USD', this.valorSaida)
-      .subscribe((data) => {
-        this.valorDolar = data['result'];
-        console.log(this.valorDolar)
-        this.guardar();
-      });
-  }
 
 }
