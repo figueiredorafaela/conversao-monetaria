@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { IConversao } from '../interfaces/IConversao';
 import { MatPaginator } from '@angular/material/paginator';
 import { ConfirmaDeleteDialogComponent } from '../confirma-delete-dialog/confirma-delete-dialog.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-historico',
@@ -17,6 +18,10 @@ export class HistoricoComponent implements OnInit {
   @ViewChild(MatSort) matSort: MatSort;
   @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
+  moedaDestino: string;
+  valorSaida: number;
+  valorDolar: number;
+
   mostraHistorico = [
     'valorEntrada',
     'moedaOriginal',
@@ -24,13 +29,20 @@ export class HistoricoComponent implements OnInit {
     'valorSaida',
     'data',
     'taxa',
-    'deleta'
+    'deleta',
   ];
 
   dataSource = new MatTableDataSource<IConversao>();
   conversoes: IConversao[];
+  form: FormGroup;
 
-  constructor(private service: MoedaService, public dialog: MatDialog) { }
+  constructor(private moedaService: MoedaService, public dialog: MatDialog) {
+    this.form = new FormGroup({
+      moedaOriginal: new FormControl(''),
+      moedaDestino: new FormControl(''),
+      valorEntrada: new FormControl('')
+    });
+  }
 
 
 
@@ -71,6 +83,5 @@ export class HistoricoComponent implements OnInit {
       }
     })
   }
-
 
 }

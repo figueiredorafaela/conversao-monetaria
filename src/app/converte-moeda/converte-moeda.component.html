@@ -40,10 +40,7 @@
                 data-error="Selecione a moeda."
                 [(value)]="moedaOriginal"
               >
-                <mat-option
-                  *ngFor="let moeda of moedas"
-                  [value]="moeda.code"
-                >
+                <mat-option *ngFor="let moeda of moedas" [value]="moeda.code">
                   {{ moeda.code }} | {{ moeda.description }}
                 </mat-option>
               </mat-select>
@@ -60,10 +57,7 @@
                 data-error="Selecione a moeda."
                 [(value)]="moedaDestino"
               >
-                <mat-option
-                  *ngFor="let moedas of moedas"
-                  [value]="moedas.code"
-                >
+                <mat-option *ngFor="let moedas of moedas" [value]="moedas.code">
                   {{ moedas.code }} | {{ moedas.description }}
                 </mat-option>
               </mat-select>

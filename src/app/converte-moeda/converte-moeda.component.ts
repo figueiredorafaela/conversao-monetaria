@@ -53,6 +53,7 @@ export class ConverteMoedaComponent implements OnInit {
       valorSaida: this.valorSaida,
       moedaDestino: this.moedaDestino,
       taxa: this.taxa,
+      valorDolar: this.valorDolar
     };
 
     this.getItem();
@@ -64,12 +65,11 @@ export class ConverteMoedaComponent implements OnInit {
     this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
       this.data = new Date();
       this.valorSaida = x['result'];
-      console.log(this.valorSaida)
       this.taxa = Object.values(x['info']);
-      console.log(this.taxa)
 
+      this.checarValorAlto();
       this.guardar();
-    })
+    });
   }
 
   getItem() {
@@ -82,5 +82,12 @@ export class ConverteMoedaComponent implements OnInit {
     this.moedaOriginal = '';
   }
 
+  checarValorAlto() {
+    this.moedaService.converterMoeda(this.moedaDestino, 'USD', this.valorSaida).subscribe((x: any) => {
+        this.valorDolar = x['result'];
+        console.log(this.valorDolar);
+        this.guardar();
+    })
+  }
 
 }
