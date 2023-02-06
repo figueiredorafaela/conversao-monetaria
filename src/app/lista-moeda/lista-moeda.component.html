@@ -3,9 +3,11 @@
     <h1 class="font-weight-bold text-light">Lista de moedas</h1>
   </div>
 
-  <div class="card mt-2 mx-auto bg-light shadow mb-2 bg-white rounded">
-    <mat-form-field>
-      <div class="col-lg-6 mx-auto">
+  <div class="col-lg-6 mx-auto">
+    <div
+      class="card mt-2 mx-auto p-4 bg-light shadow p-3 mb-2 bg-white rounded"
+    >
+      <mat-form-field>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default"
@@ -21,9 +23,7 @@
             class="form-control"
           />
         </div>
-      </div>
-    </mat-form-field>
-    <div class="mx-auto">
+      </mat-form-field>
       <mat-table
         mat-table
         [dataSource]="dataSource"
@@ -52,6 +52,7 @@
     </div>
 
     <mat-paginator
+      class="shadow p-3 mb-2 bg-white rounded"
       [pageSizeOptions]="[5, 10, 15, 25]"
       showFirstLastButtons
       aria-label="Listagem de moedas"

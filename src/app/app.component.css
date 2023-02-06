@@ -1,16 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
 
-header{
+*{
   margin: 0;
-}
-.navbar-brand {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-}
-
-.navbar .nav {
-  font-family: 'Open Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.2rem;
+  padding: 0;
 }
