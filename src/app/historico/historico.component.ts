@@ -17,7 +17,7 @@ export class HistoricoComponent implements OnInit {
   @ViewChild(MatSort) matSort: MatSort;
   @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
-  mostraMoeda: string[] = [
+  mostraHistorico = [
     'valorEntrada',
     'moedaOriginal',
     'moedaDestino',
@@ -25,14 +25,25 @@ export class HistoricoComponent implements OnInit {
     'data',
     'taxa',
     'deleta'
-  ]
+  ];
+
+  dataSource = new MatTableDataSource<IConversao>();
+  conversoes: IConversao[];
 
   constructor(private service: MoedaService, public dialog: MatDialog) { }
 
-  dataSource = new MatTableDataSource<IConversao>();
+
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<IConversao>
+    this.dataSource.paginator = this.matPaginator
+    this.dataSource.sort = this.matSort;
     this.dataSource.data = JSON.parse(localStorage.getItem('conversao')!) || [];
+    this.dataSource.sort = this.matSort;
+  }
+
+  ngAfterViewInit(){
+    this.dataSource.paginator = this.matPaginator;
     this.dataSource.sort = this.matSort;
   }
 
