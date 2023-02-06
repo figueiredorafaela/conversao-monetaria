@@ -7,21 +7,20 @@ import { Observable } from 'rxjs';
 
 export class MoedaService {
 
-  urlApi = "https://api.exchangerate.host/"
+  API_URL = "https://api.exchangerate.host/"
 
 
   constructor(private httpClient: HttpClient) { }
 
 
   public getSymbols(): Observable<any> {
-    console.log("getSymbols moeda.service")
-    return this.httpClient.get<any>(this.urlApi + '/symbols');
+    return this.httpClient.get<any>(this.API_URL + '/symbols');
   }
 
-  public converterMoeda(moedaOriginal: string, moedaDestino: string, valor: number){
-    console.log("converteMoeda service moeda")
-    const url = `${this.urlApi}/convert?from=${moedaOriginal}&to=${moedaDestino}&amount=${valor}&places=2`
-    return this.httpClient.get(this.urlApi);
+  public converterMoeda(moedaOriginal: string, moedaDestino: string, valor: number) {
+    const url = `${this.API_URL}/convert?from=${moedaOriginal}&to=${moedaDestino}&amount=${valor}&places=2`
+    var resultado = this.httpClient.get(url);
+    return resultado;
   }
 
 

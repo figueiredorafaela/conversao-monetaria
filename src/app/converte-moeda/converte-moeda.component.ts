@@ -13,8 +13,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class ConverteMoedaComponent implements OnInit {
 
-  moedas: IMoedas[] = [];
-  conversao: IConversao[] = [];
+  moedas: IMoedas[];
+  conversao: IConversao[];
 
   form: FormGroup;
 
@@ -54,6 +54,7 @@ export class ConverteMoedaComponent implements OnInit {
       moedaDestino: this.moedaDestino,
       taxa: this.taxa,
     };
+
     this.getItem();
     this.conversao.push(conversao);
     localStorage.setItem('conversao', JSON.stringify(this.conversao));
@@ -63,11 +64,12 @@ export class ConverteMoedaComponent implements OnInit {
     this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
       this.data = new Date();
       this.valorSaida = x['result'];
-      this.taxa = x['info'];
-    })
-    this.guardar();
-    this.limparCampo();
+      console.log(this.valorSaida)
+      this.taxa = Object.values(x['info']);
+      console.log(this.taxa)
 
+      this.guardar();
+    })
   }
 
   getItem() {
@@ -76,6 +78,8 @@ export class ConverteMoedaComponent implements OnInit {
 
   limparCampo() {
     this.valorEntrada = 0;
+    this.moedaDestino = '';
+    this.moedaOriginal = '';
   }
 
 
