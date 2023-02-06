@@ -10,6 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./converte-moeda.component.css']
 })
 
+
 export class ConverteMoedaComponent implements OnInit {
 
   moedas: IMoedas[] = [];
@@ -17,12 +18,13 @@ export class ConverteMoedaComponent implements OnInit {
 
   form: FormGroup;
 
-  valorEntrada!: number;
-  moedaOriginal!: string;
-  moedaDestino!: string;
-  valorSaida!: number;
-  taxa: any;
-  data!: any;
+  valorEntrada: number;
+  moedaOriginal: string;
+  moedaDestino: string;
+  valorSaida: number;
+  valorDolar: number;
+  taxa;
+  data;
 
   constructor(private moedaService: MoedaService) {
     this.form = new FormGroup({
@@ -40,25 +42,23 @@ export class ConverteMoedaComponent implements OnInit {
         return final;
       });
       this.moedas = object;
-      console.log("moedas")
-      console.log(this.moedas)
     });
   }
 
   converter() {
-    this.moedaService.converterMoeda(
-      this.moedaOriginal,
-      this.moedaDestino,
-      this.valorEntrada)
-      .subscribe((x: any) => {
-        this.valorSaida = x["result"];
-        this.taxa = x['info']['rate'];
+    this.moedaService.converterMoeda(this.moedaOriginal, this.moedaDestino, this.valorEntrada).subscribe((x) => {
+      this.data = new Date();
+      this.valorSaida = x['result'];
+      this.taxa = x['info'];
+      console.log(this.valorSaida);
+      this.validar();
     })
-    console.log("Pedido de conversao")
+    this.guardar();
+
   }
 
   guardar() {
-    const conversao = {
+    var conversao = {
       data: this.data,
       valorEntrada: this.valorEntrada,
       moedaOriginal: this.moedaOriginal,
@@ -68,13 +68,25 @@ export class ConverteMoedaComponent implements OnInit {
     };
     this.getItem();
     this.conversao.push(conversao);
-    console.log(conversao)
     console.log(conversao);
     localStorage.setItem('conversao', JSON.stringify(this.conversao));
   }
 
-  getItem(){
+  getItem() {
     this.conversao = JSON.parse(localStorage.getItem('conversao')!) || [];
+  }
+
+  limparCampo() {
+    this.valorEntrada = 0;
+  }
+
+  validar() {
+    this.moedaService.converterMoeda(this.moedaDestino, 'USD', this.valorSaida)
+      .subscribe((data) => {
+        this.valorDolar = data['result'];
+        console.log(this.valorDolar)
+        this.guardar();
+      });
   }
 
 }

@@ -9,19 +9,19 @@
           <mat-form-field class="form-group">
             <div class="controls">
               <div class="form-group">
-                <mat-label for="form-valor">Valor</mat-label>
+                <mat-label for="valorEntrada">Valor</mat-label>
                 <div class="input-group mb-3">
                   <span class="input-group-text">$</span>
                   <input
-                    id="form-valor"
+                    id="valorEntrada"
                     type="number"
-                    name="valor"
+                    name="valorEntrada"
                     class="form-control"
                     placeholder="Digite o valor a ser convertido *"
-                    required="required"
+                    required
                     aria-required="true"
-                    data-error="É necessário preencher um valor."
-                    min="1"
+                    pattern="^[0-9]+$"
+                    #valorInput="ngModel"
                     matInput
                     [(ngModel)]="valorEntrada"
                   />
@@ -30,12 +30,12 @@
             </div>
 
             <div class="form-group">
-              <label for="form-moeda">Converter de</label>
+              <mat-label for="moedaOriginal">Converter de</mat-label>
               <mat-select
-                id="form_moeda"
+                id="moedaOriginal"
                 name="moedaOriginal"
                 class="form-control"
-                required="required"
+                required
                 aria-required="true"
                 data-error="Selecione a moeda."
                 [(value)]="moedaOriginal"
@@ -50,12 +50,12 @@
             </div>
 
             <div class="form-group">
-              <mat-label for="form-moeda">Para</mat-label>
+              <mat-label for="moedaDestino">Para</mat-label>
               <mat-select
-                id="form_moeda"
+                id="moedaDestino"
                 name="moedaDestino"
                 class="form-control"
-                required="required"
+                required
                 aria-required="true"
                 data-error="Selecione a moeda."
                 [(value)]="moedaDestino"
@@ -86,29 +86,29 @@
         <div class="card-body bg-light">
           <div class="container">
             <div class="form-group">
-              <label for="valor_convertido">Valor convertido</label>
+              <label for="valorSaida">Valor convertido</label>
               <div class="input-group">
                 <span class="input-group-text">$</span>
                 <input
-                  id="valor_convertido"
+                  id="valorSaida"
                   type="number"
-                  name="valor_convertido"
+                  name="valorSaida"
                   class="form-control"
                   readonly
-                  disabled
                   placeholder="0,00"
+                  matInput
                   [(ngModel)]="valorSaida"
                 />
               </div>
-              <label for="taxa-cotacao">Taxa de cotação</label>
+              <mat-label for="taxa-cotacao">Taxa de cotação</mat-label>
               <input
                 id="taxa-cotacao"
                 type="text"
                 name="taxa_cotacao"
                 readonly
-                disabled
                 class="form-control"
                 placeholder="0,00"
+                matInput
                 [(ngModel)]="taxa"
               />
             </div>

@@ -1,4 +1,4 @@
-  export interface Conversao {
+  export interface IConversao {
       valorEntrada: number;
       moedaOriginal: string;
       moedaDestino: string;

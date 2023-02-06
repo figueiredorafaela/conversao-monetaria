@@ -21,6 +21,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCommonModule} from '@angular/material/core'
 
 
 registerLocaleData(localePt, 'pt')
@@ -46,7 +52,13 @@ registerLocaleData(localePt, 'pt')
     BrowserAnimationsModule,
     MatInputModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatCardModule,
+    MatSortModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatCommonModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }

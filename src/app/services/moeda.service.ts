@@ -18,7 +18,7 @@ export class MoedaService {
     return this.httpClient.get<any>(this.urlApi + '/symbols');
   }
 
-  public converterMoeda(moedaOriginal: string, moedaDestino: string, valor: number) {
+  public converterMoeda(moedaOriginal: string, moedaDestino: string, valor: number){
     console.log("converteMoeda service moeda")
     const url = `${this.urlApi}/convert?from=${moedaOriginal}&to=${moedaDestino}&amount=${valor}&places=2`
     return this.httpClient.get(this.urlApi);
