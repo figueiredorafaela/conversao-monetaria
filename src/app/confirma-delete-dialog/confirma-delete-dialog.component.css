@@ -1,0 +1,7 @@
+.modal-dialog{
+  overflow: hidden;
+}
+.modal-body{
+  width: 400px;
+  height: 60px;
+}

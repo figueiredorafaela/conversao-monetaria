@@ -1,6 +1,6 @@
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { IConversao } from '../interfaces/IConversao';
@@ -37,7 +37,7 @@ export class HistoricoComponent implements OnInit {
   ]
 
   deletar(conversao: IConversao) {
-    const dialogRef = this.dialog.open(ConfirmaDeleteDialogComponent, {width: '400px', height: '120px',})
+    const dialogRef = this.dialog.open(ConfirmaDeleteDialogComponent)
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -48,5 +48,17 @@ export class HistoricoComponent implements OnInit {
       }
     });
   }
+
+  deletarTudo() {
+    const deletaTudoDialog = this.dialog.open(ConfirmaDeleteDialogComponent)
+    deletaTudoDialog.afterClosed().subscribe(result => {
+      if (result) {
+        localStorage.clear();
+        location.reload()
+
+      }
+    })
+  }
+
 
 }
