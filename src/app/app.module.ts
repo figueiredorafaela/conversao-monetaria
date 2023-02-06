@@ -27,6 +27,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCommonModule} from '@angular/material/core'
+import {MatIconModule} from '@angular/material/icon';
+import { ConfirmacaoDeleteDialogComponent } from './confirmacao-delete-dialog/confirmacao-delete-dialog.component';
 
 
 registerLocaleData(localePt, 'pt')
@@ -36,8 +38,9 @@ registerLocaleData(localePt, 'pt')
     ListaMoedaComponent,
     ConverteMoedaComponent,
     MenuComponent,
-    HistoricoComponent
-  ],
+    HistoricoComponent,
+    ConfirmacaoDeleteDialogComponent
+   ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -51,6 +54,7 @@ registerLocaleData(localePt, 'pt')
     MatTableModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatIconModule,
     MatToolbarModule,
     ReactiveFormsModule,
     MatTabsModule,

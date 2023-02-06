@@ -3,7 +3,7 @@
       moedaOriginal: string;
       moedaDestino: string;
       valorSaida: number;
-      data?: Date;
+      data: Date;
       taxa: number;
   }
 

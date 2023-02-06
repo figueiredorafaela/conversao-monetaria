@@ -1,9 +1,11 @@
+import { ConfirmacaoDeleteDialogComponent } from '../confirmacao-delete-dialog/confirmacao-delete-dialog.component';
 import { MoedaService } from './../services/moeda.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { IConversao } from '../interfaces/IConversao';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-historico',
@@ -13,8 +15,13 @@ import { IConversao } from '../interfaces/IConversao';
 export class HistoricoComponent implements OnInit {
 
   @ViewChild(MatSort) matSort: MatSort;
+  @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
-  constructor(private service: MoedaService, dialog: MatDialog) { }
+  dialog: MatDialog;
+
+  constructor(private service: MoedaService, dialog: MatDialog) {
+    this.dialog = dialog;
+  }
 
   dataSource = new MatTableDataSource<IConversao>();
 
@@ -29,7 +36,20 @@ export class HistoricoComponent implements OnInit {
     'moedaDestino',
     'valorSaida',
     'data',
-    'taxa'
+    'taxa',
+    'deleta'
   ]
+
+  delete(conversao: IConversao) {
+    const dialogRef = this.dialog.open(ConfirmacaoDeleteDialogComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const index = this.dataSource.data.indexOf(conversao);
+        localStorage.setItem('conversao', JSON.stringify(this.dataSource.data));
+        this.dataSource.data = JSON.parse(localStorage.getItem('conversao')!) || [];
+      }
+    });
+  }
 
 }
