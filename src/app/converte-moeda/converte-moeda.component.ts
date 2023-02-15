@@ -67,7 +67,7 @@ export class ConverteMoedaComponent implements OnInit {
       this.valorSaida = x['result'];
       this.taxa = Object.values(x['info']);
 
-      this.checarValorAlto();
+      this.checar();
       this.guardar();
     });
   }
@@ -76,18 +76,12 @@ export class ConverteMoedaComponent implements OnInit {
     this.conversao = JSON.parse(localStorage.getItem('conversao')!) || [];
   }
 
-  limparCampo() {
-    this.valorEntrada = 0;
-    this.moedaDestino = '';
-    this.moedaOriginal = '';
-  }
 
-  checarValorAlto() {
-    this.moedaService.converterMoeda(this.moedaDestino, 'USD', this.valorSaida).subscribe((x: any) => {
+  checar() {
+    this.moedaService.converterMoeda(this.moedaDestino, 'USD', this.valorSaida).subscribe((x) => {
         this.valorDolar = x['result'];
-        console.log(this.valorDolar);
         this.guardar();
-    })
+    });
   }
 
 }

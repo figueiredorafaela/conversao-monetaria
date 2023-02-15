@@ -28,6 +28,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCommonModule} from '@angular/material/core'
 import {MatIconModule} from '@angular/material/icon';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ConfirmaDeleteDialogComponent } from './confirma-delete-dialog/confirma-delete-dialog.component';
 
 
@@ -62,6 +63,7 @@ registerLocaleData(localePt, 'pt')
     MatSortModule,
     MatTooltipModule,
     MatDialogModule,
+    NgxMatSelectSearchModule,
     MatCommonModule,
   ],
   providers: [
