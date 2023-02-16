@@ -1,4 +1,4 @@
-import { Conversao } from '../interfaces/IConversao';
+import { IConversao } from '../interfaces/IConversao';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -19,14 +19,14 @@ export class ConversaoService {
     return this.listaConversoes;
   }
 
-  adicionar(conversao: Conversao) {
+  adicionar(conversao: IConversao) {
     this.apurar(conversao);
 
-    return this.httpClient.post<Conversao>(this.url, conversao);
+    return this.httpClient.post<IConversao>(this.url, conversao);
   }
 
   todas() {
-    return this.httpClient.get<Conversao[]>(this.url)
+    return this.httpClient.get<IConversao[]>(this.url)
   }
 
 

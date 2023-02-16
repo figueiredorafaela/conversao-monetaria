@@ -12,6 +12,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 
 export class ConverteMoedaComponent implements OnInit {
+  static guardar() {
+    throw new Error('Method not implemented.');
+  }
 
   moedas: IMoedas[];
   conversao: IConversao[];
